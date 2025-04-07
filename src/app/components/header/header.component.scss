@@ -1,0 +1,73 @@
+.header {
+  height: 60px;
+  display: flex;
+  background-color: #818080bb;
+
+  &__logo {
+    width: 150px;
+
+    img {
+      width: 150px;
+    }
+  }
+
+  &__burger-menu {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__search {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    &__input {
+      height: 50px;
+      width: 500px;
+
+      input {
+        font-size: 16px;
+        margin: 10px;
+        width: 500px;
+        padding: 7px;
+        padding-left: 30px;
+        border: 1px solid rgb(146, 146, 146);
+        border-radius: 18px 0 0 18px;
+
+        &::placeholder {
+          font-size: 16px;
+          padding-top: 20px;
+        }
+      }
+    }
+
+    &__button {
+      button {
+        font-size: 18px;
+        margin-left: 6px;
+        margin-top: 10px;
+        height: 41px;
+        width: 45px;
+        padding-right: 5px;
+        border: 1px solid rgb(146, 146, 146);
+        background-color: #ffffff;
+        color: rgb(255, 152, 0);
+        border-radius: 0 18px 18px 0;
+        cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: rgb(255, 152, 0);
+          color: #ffffff;
+        }
+      }
+    }
+  }
+    //заменить .com на .by в language id
+
+  .favorites {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 32px;
+  }
+}

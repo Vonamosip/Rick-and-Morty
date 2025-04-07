@@ -1,0 +1,50 @@
+@use "ng-zorro-antd/ng-zorro-antd.min.css";
+@use "./header-theme";
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+*,
+*::before,
+*::after {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, textarea, select {
+  outline: none;
+  font: inherit;
+  border: none;
+  background: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input:focus {
+  border: none;
+  outline: none;
+}
+
+p {
+  cursor: default;
+}

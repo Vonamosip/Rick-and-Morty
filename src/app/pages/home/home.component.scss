@@ -1,0 +1,9 @@
+.main {
+  width: 100vw;
+  height: 94vh;
+  background:
+    linear-gradient(to left,#000000, rgb(0, 0, 0)),
+    url('/assets/background.jpg') no-repeat center;
+  background-size:contain;
+  background-blend-mode: overlay;
+}
