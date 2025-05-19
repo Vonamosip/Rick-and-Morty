@@ -1,15 +1,16 @@
 <cdk-virtual-scroll-viewport
-  #scrollContainer
   itemSize="620"
   class="scroll-view"
+  appScrollEnd
+  (isScroll)="loadPage()"
   >
-    @let characters = characters$ | async;
+    @let characters = matrix$ | async;
     <div class="characters" *cdkVirtualFor="let row  of characters">
       @for ( character of row; track $index) {
         <div class="character">
           <div class="character__img"><img [src]="character.image"></div>
             <div class="character__name">
-              <p>{{character.name}}</p>
+              <a [routerLink]="['/home',character.id]" routerLinkActive="active" >{{character.name}}</a>
             </div>
             <div class="character__status" [ngClass]="character.status.toLowerCase()">
               <p>{{character.status}} - {{character.species}}</p>
@@ -30,3 +31,5 @@
           }
       </div>
 </cdk-virtual-scroll-viewport>
+
+<router-outlet></router-outlet>

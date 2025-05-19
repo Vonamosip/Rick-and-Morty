@@ -1,12 +1,13 @@
 .header {
   height: 60px;
   display: flex;
-  background-color: #818080bb;
+  background-color: #18181b;
 
   &__logo {
     width: 150px;
 
     img {
+      cursor: pointer;
       width: 150px;
     }
   }
@@ -41,6 +42,19 @@
       }
     }
 
+    &__clear {
+      border: 1px solid rgb(146, 146, 146);
+      border-radius: 20%;
+      padding: 10px;
+      position: absolute;
+      top: 5px;
+      left: 520px;
+      cursor: pointer;
+      background-color: #1f1f1f;
+      color: #efeff1;
+      font-size: 20px;
+    }
+
     &__button {
       button {
         font-size: 18px;
@@ -51,23 +65,64 @@
         padding-right: 5px;
         border: 1px solid rgb(146, 146, 146);
         background-color: #ffffff;
-        color: rgb(255, 152, 0);
+        color: rgb(0, 110, 255);
         border-radius: 0 18px 18px 0;
         cursor: pointer;
         transition: 0.5s;
 
         &:hover {
-          background-color: rgb(255, 152, 0);
+          background-color: rgb(0, 102, 255);
           color: #ffffff;
         }
       }
     }
+
+    &__history {
+      position: absolute;
+      top: 60px;
+      width: 500px;
+      background-color: #1f1f1f;
+      border: 1px solid rgb(85, 85, 85);
+      border-radius: 6px;
+      padding: 10px 0;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 8px 20px;
+
+          button {
+            background: none;
+            border: none;
+            color: #efeff1;
+            text-align: left;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+
+            &:hover {
+              background-color: #333;
+            }
+          }
+        }
+      }
+    }
   }
-    //заменить .com на .by в language id
 
   .favorites {
+    color: #efeff1;
     margin: 10px;
     cursor: pointer;
     font-size: 32px;
   }
+}
+
+.ant-menu-horizontal {
+  color: #efeff1;
 }

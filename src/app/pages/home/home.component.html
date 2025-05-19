@@ -1,4 +1,8 @@
-<app-header></app-header>
+<app-header
+(search)="search($event)"
+></app-header>
 <div class="main">
-  <app-characters></app-characters>
+  <app-characters
+  [characters$]="characters$"
+  ></app-characters>
 </div>

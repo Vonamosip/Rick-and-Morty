@@ -1,5 +1,5 @@
 .scroll-view {
-  height:945px;
+  height:95vh;
   width: 100%;
 }
 
@@ -13,12 +13,12 @@
   background-color: rgba(0, 0, 0, 0.2);
 
   .character {
-    width: 302px;
+    width: 450px;
     height: 620px;
     margin: 10px;
-    border: 1px solid rgb(146, 146, 146);
     border-radius: 10px;
-    background-color: rgb(60, 62, 68);
+    background-color: #1e1f29;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     p {
       font-size: 20px;
@@ -28,12 +28,13 @@
 
     &__name {
       padding-top: 10px;
+      padding-left: 10px;
 
       :hover {
-        color:  rgb(255, 152, 0);
+        color:  rgb(0, 102, 255);
       }
 
-      p {
+      a {
         cursor: pointer;
         text-transform: uppercase;
         font-size: 27px;
@@ -43,13 +44,14 @@
     }
 
     &__img {
+      padding-top: 10px;
       height: 300px;
       width: 300px;
       margin: 0 auto;
 
       img {
         margin-bottom: 10px;
-        border-radius: 9px 9px 0 0;
+        border-radius: 9px ;
       }
     }
 
@@ -83,7 +85,7 @@
       color: #ffffff;
 
       :hover {
-        color: rgb(255, 152, 0);
+        color: rgb(0, 102, 255);
       }
     }
 
@@ -91,7 +93,7 @@
       color: #ffffff;
 
       :hover {
-        color: rgb(255, 152, 0);
+        color: rgb(0, 102, 255);
       }
     }
 
@@ -99,7 +101,7 @@
       color: #ffffff;
 
       :hover {
-        color: rgb(255, 152, 0);
+        color: rgb(0, 102, 255);
       }
     }
 
@@ -107,9 +109,42 @@
       font-size: 22px;
       color:rgb(114, 114, 114);
     }
+    &:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
   }
 }
 
 .hidden {
   display: none;
+}
+
+@media screen and (max-width:2400px){
+.characters {
+    .character {
+      width: 350px;
+
+    }
+  }
+}
+
+@media screen and (max-width:1900px){
+  .characters {
+    .character {
+      width: 302px;
+
+      &__img {
+        padding-top: 0px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:1050px){
+
+}
+
+@media screen and (max-width:700px){
+
 }

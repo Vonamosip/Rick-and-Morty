@@ -1,41 +1,28 @@
-import { BehaviorSubject, map, Observable, scan, switchMap, throttleTime } from 'rxjs';
-import { Component, ViewChild   } from '@angular/core';
+import { BehaviorSubject, map, Observable, scan, switchMap } from 'rxjs';
+import { Component, Input, input, output   } from '@angular/core';
 import { CharactersService } from '../../services/characters.service';
 import { ICharacter } from '../../interfaces/character.interface';
 import { CommonModule } from '@angular/common';
-import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ScrollDirective } from '../../directives/appScrollEnd.directive';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-characters',
-  imports: [ CommonModule, ScrollingModule ],
+  imports: [ CommonModule, ScrollingModule, ScrollDirective, RouterModule ],
   templateUrl: './characters.component.html',
   styleUrl: './characters.component.scss',
   standalone: true,
 })
 export class CharactersComponent {
-  @ViewChild('scrollContainer') scrollContainer!: CdkVirtualScrollViewport;
 
-  public characters$?:Observable<ICharacter[][]>;
+  @Input() public characters$?: Observable<ICharacter[]>;
+
+  public matrix$: Observable<ICharacter[][]> = new Observable<ICharacter[][]>;
   public page$ = new BehaviorSubject<number>(1);
 
-  constructor (
-    private readonly charactersService: CharactersService,
-  )
-  {
+  constructor(private readonly charactersService: CharactersService) {
     this.getCharacters();
-  }
-
-  ngAfterViewInit(): void {
-    this.scrollContainer.elementScrolled().pipe(
-      throttleTime(50),
-    ).subscribe(()=> {
-      console.log(this.scrollContainer.measureScrollOffset('bottom'))
-      if (this.scrollContainer.measureScrollOffset('bottom') < 500) {
-      this.page$.next(this.page$.value + 1);
-      console.log(this.scrollContainer.measureScrollOffset('bottom'));
-      }
-    })
   }
 
   private chunkArray(arr: ICharacter[], size: number): ICharacter[][] {
@@ -46,8 +33,12 @@ export class CharactersComponent {
     }, []);
   }
 
+  public loadPage(): void {
+    this.page$.next(this.page$.value + 1);
+  }
+
   public getCharacters(): void {
-    this.characters$ = this.page$.pipe(
+    this.matrix$ = this.page$.pipe(
       switchMap((page) =>
         this.charactersService.getCharacterByPage(page).pipe(
           map((response) => this.chunkArray(response.results, 5))
@@ -59,4 +50,11 @@ export class CharactersComponent {
     );
   }
 
+  ngOnChanges(): void {
+    if (this.characters$) {
+      this.matrix$ = this.characters$.pipe(
+        map((characters) => this.chunkArray(characters, 5))
+      );
+    }
+  }
 }

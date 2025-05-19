@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ICharacter, ICharactersResponse } from '../interfaces/character.interface';
 import { environment } from '../../environment/environment';
 
@@ -19,6 +19,10 @@ export class CharactersService {
 
   getCharacterByPage(page: number): Observable<ICharactersResponse>{
     return this.http.get<ICharactersResponse>(`${environment.api}character/?page=${page}`);
+  }
+
+  getCharacterByName(name: string): Observable<ICharactersResponse>{
+    return this.http.get<ICharactersResponse>(`${environment.api}character/?name=${name}`);
   }
 
   getCharacter(id: number): Observable<ICharacter>{

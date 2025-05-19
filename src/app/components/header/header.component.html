@@ -1,15 +1,43 @@
 <div class="header">
   <div class="header__logo">
-    <!-- <nz-icon nzType="R_and_MLogo.svg" nzTheme="outline"/> -->
-     <img src=" /assets/R_and_MLogo.svg" alt="logo">
+    <button [routerLink]="['/home']" routerLinkActive="active">
+      <img src=" /assets/R_and_MLogo.svg" alt="logo">
+    </button>
   </div>
-  <div class="header__search">
+  <div (focusin)="this.isCollapsed = true" (focusout)="this.isCollapsed = false" class="header__search" tabindex="0">
     <div class="header__search__input">
-      <input type="search" placeholder="Введите персонажа">
+      <input
+        [formControl]="searchControl"
+        type="search"
+        placeholder="Введите персонажа"
+      />
     </div>
+
     <div class="header__search__button">
-      <button><nz-icon nzType="search" nzTheme="outline" /></button>
+      <button
+        [routerLink]="['/home']"
+        routerLinkActive="active">
+        <nz-icon nzType="search" nzTheme="outline" />
+      </button>
     </div>
+    @if (isCollapsed) {
+    <div class="header__search__history">
+        <ul>
+          @for (item of historySignal(); track $index) {
+            <li>
+              <button >
+                {{ item }}
+              </button>
+            </li>
+          }
+        </ul>
+        <div class="header__search__clear">
+          <button class="header__search__clear__button" (click)="clearHistory()">
+            <nz-icon nzType="delete" nzTheme="outline" />
+          </button>
+        </div>
+    </div>
+    }
   </div>
 
   <div class="header__burger-menu">

@@ -22,7 +22,7 @@ const icons: any[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, inMemoryScrollingFeature),
     provideAnimationsAsync(),
     provideHttpClient(),
     provideNzIcons(icons)
