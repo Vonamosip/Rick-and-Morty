@@ -1,1 +1,39 @@
-<p>info works!</p>
+@let character = character$ | async;
+<div class="character-info">
+  <div class="character-info">
+    <div class="character-info__img"><img [src]="character?.image"></div>
+    <a [routerLink]="['/home']" routerLinkActive="home" >Home</a>
+    <div class="character-info__name">
+      <p>{{character?.name}}</p>
+    </div>
+    <div class="character-info__status" [ngClass]="character?.status?.toUpperCase()">
+      <p>{{character?.status}} - {{character?.species}}</p>
+    </div>
+    <div class="character-info__created">
+      <p class="character-info__text">First seen in:</p>
+      <p>{{character?.created | date}}</p>
+    </div>
+    <div class="character-info__location">
+      <p class="character-info__text">Last known location:</p>
+      <p>{{character?.location?.name}}</p>
+    </div>
+    <div class="character-info__location">
+      <p class="character-info__text">origin:</p>
+      <p>{{character?.origin?.name}}</p>
+    </div>
+    <div class="character-info__created">
+      <p class="character-info__text">gender:</p>
+      <p>{{character?.gender}}</p>
+    </div>
+    <div class="character-info__episodes">
+      <p class="character-info__text">Episodes:</p>
+      @for (item of character?.episode; track $index) {
+        <p>{{item}}</p>
+      }
+    </div>
+    <div [class]="character?.type ? 'character-info__type' : 'hidden'">
+      <p class="character-info__text">character type:</p>
+      <p>{{character?.type}}</p>
+    </div>
+  </div>
+</div>

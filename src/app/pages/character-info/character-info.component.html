@@ -1,23 +1,4 @@
-<!-- <div class="character-info">
-  <div class="character">
-    <div class="character__img"><img [src]="character.image"></div>
-    <div class="character__name">
-      <a [routerLink]="['/home']" routerLinkActive="active" >{{character.name}}</a>
-    </div>
-    <div class="character__status" [ngClass]="character.status.toUpperCase()">
-      <p>{{character.status}} - {{character.species}}</p>
-    </div>
-    <div class="character__created">
-      <p class="character__text">First seen in:</p>
-      <p>{{character.created | date}}</p>
-    </div>
-    <div class="character__location">
-      <p class="character__text">Last known location:</p>
-      <p>{{character.location.name}}</p>
-    </div>
-    <div [class]="character.type ? 'character__type' : 'hidden'">
-      <p class="character__text">character type:</p>
-      <p>{{character.type}}</p>
-    </div>
-  </div>
-</div> -->
+<div class="single-character-info">
+  <app-header></app-header>
+  <app-info></app-info>
+</div>

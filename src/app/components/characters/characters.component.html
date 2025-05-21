@@ -10,7 +10,7 @@
         <div class="character">
           <div class="character__img"><img [src]="character.image"></div>
             <div class="character__name">
-              <a [routerLink]="['/home',character.id]" routerLinkActive="active" >{{character.name}}</a>
+              <a [routerLink]="['/character',character.id]" routerLinkActive="active" >{{character.name}}</a>
             </div>
             <div class="character__status" [ngClass]="character.status.toLowerCase()">
               <p>{{character.status}} - {{character.species}}</p>

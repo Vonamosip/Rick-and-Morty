@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CharactersService } from './../../services/characters.service';
+import { InfoComponent } from "../../components/info/info.component";
+import { HeaderComponent } from "../../components/header/header.component";
 
 @Component({
   selector: 'app-character-info',
-  imports: [],
+  imports: [InfoComponent, HeaderComponent],
   templateUrl: './character-info.component.html',
   styleUrl: './character-info.component.scss',
   standalone: true,
